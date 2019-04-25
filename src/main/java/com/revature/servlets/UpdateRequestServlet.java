@@ -39,13 +39,13 @@ public class UpdateRequestServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		System.out.println("UPDATE SERVLET");//NEED TO ADD ERROR HANDLING
+		System.out.println("UPDATE SERVLET");
 		if (session != null && session.getAttribute("employeeId") != null) {
 			try {
 				String rqId = request.getParameter("rqId").toString();
 				int reqId = Integer.parseInt(rqId);
 				String stat = request.getParameter("status").toString();
-				//need to add some error handling -- especially with throwing of rqId if not found
+			
 				Boolean a = erd.resolveRequest(reqId, stat);
 				System.out.println(a);
 				if(a == true) {

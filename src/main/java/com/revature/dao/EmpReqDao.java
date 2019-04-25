@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.util.List;
 
 import com.revature.beans.Employees;
+import com.revature.beans.Login;
 import com.revature.beans.Requests;
 
 public interface EmpReqDao {
@@ -34,6 +35,8 @@ public interface EmpReqDao {
 	public String getManager(int employeeId);
 
 	boolean updateEmps(Employees emp);
+	
+	public boolean updateLogin(Login log);
 	
 	public boolean registerEmployee(Employees emp); //12 register employee -- EXTRA
 

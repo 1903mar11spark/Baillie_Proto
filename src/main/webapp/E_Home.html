@@ -172,7 +172,6 @@
                 <thead>
                     <tr>
                         <th>Request Id</th>
-                        <th>Managed By Id</th>
                         <th>Request Date</th>
                         <th>Request Type</th>
                         <th>Request Amount</th>
@@ -209,7 +208,6 @@
                     <thead>
                         <tr>
                             <th>Request Id</th>
-                            <th>Managed By Id</th>
                             <th>Request Date</th>
                             <th>Request Type</th>
                             <th>Request Amount</th>
@@ -244,22 +242,26 @@
         <div class="container d-sm-flex" style="width: 400px;">
             <div class="card"  id="colorfix"> 
                   <div class="card-header">
-                  <h2>New Properties</h2>
+                  <h2> Update Login Info</h2>
                   </div>
                     <br>
                     <div class="card-body">
                       
-                       <img src="./Images/home.jpg" width="320" height="250" alt="Emp Photo" class="card-img">
+                       <img src="./Images/group.jpg" width="350" height="250" alt="Emp Photo" class="card-img">
                       
-                        <div class="display font-weight-bold">
+                        <div class="display font-weight-bold text-center">
                             <br>
-                            <br>
-                            <p>Real Estate Value: $297,104 </p>
-                            <br>
-                            <p>Lot: 6,055 sqft</p>
-                            <br>
-                            <p>Year Built: 2010</p>
-                            <br>
+                            <form id="update-login" class="form" action="uLogin" method="post">
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Update Username</label>
+                              <input type="text" id="updateFirst" class="form-control validate" name="nUser"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Update Password</label>
+                              <input type="text" id="updateFirst" class="form-control validate" name="nPass"></textarea>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary text-center">Change</button>
+                            </form>
                         </div>
                      </div>
               </div>
@@ -283,12 +285,12 @@
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">Expense Type</label>
                     <select class="form-control" id="rqType" name="rqType">
-                      <option>Certification</option>
-                      <option>Associate Travel Expense</option>
-                      <option>Interview Expense</option>
-                      <option>Marketing Expense</option>
-                      <option>Sales Expense</option>
-                      <option>Other</option>
+                      <option>CERTIFICATION</option>
+                      <option>ASSOCIATE TRAVEL EXPENSE</option>
+                      <option>INTERVIEW EXPENSE</option>
+                      <option>MARKETING EXPENSE</option>
+                      <option>SALES EXPENSE</option>
+                      <option>OTHER</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -301,9 +303,9 @@
                   </div>
                   <div class="form-group">
                       <label for="exampleFormControlFile1" >Attach Reciept</label>
-                      <!-- <input type="file" class="form-control" id="exampleFormControlFile1" name="image"> -->
+                      <input type="file" class="form-control" id="exampleFormControlFile1" name="image">
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary text-center">Submit</button>
+                    <input type="submit" value="Update" class="btn text-primary" name="CHANGE">
                 </form>
             </div>
            </div>

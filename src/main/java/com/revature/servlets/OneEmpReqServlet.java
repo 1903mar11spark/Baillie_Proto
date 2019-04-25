@@ -26,15 +26,13 @@ public class OneEmpReqServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	EmpReqDaoImp erd = new EmpReqDaoImp();
 	Employees emp = new Employees();
-	private ObjectMapper om;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public OneEmpReqServlet() {
     	super();
-        om = new ObjectMapper();
-        om.registerModule(new JavaTimeModule());
-		om.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS, false);
+       
     }
 
 	/**
@@ -44,27 +42,28 @@ public class OneEmpReqServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if (session != null && session.getAttribute("employeeId") != null) {
 			try {
-				int userId = Integer.parseInt(session.getAttribute("employeeId").toString());
-				emp = erd.getEmployeeInfo(userId);
-				request.getParameter("username");
-				String title = "";
-				title = emp.getTitle();
-				if (!title.equals("TEMP")){
-					List<Requests> reqList = new ArrayList<Requests>();
-					reqList = erd.getPendingRequests(userId);	
+				List<Requests> reqList = new ArrayList<>();
+				String rqId = request.getParameter("empReqId").toString();
+				int empId = Integer.parseInt(rqId);
+				int manId = Integer.parseInt(session.getAttribute("employeeId").toString());
+				System.out.println("EMPLOYEE ID" + empId);
+				System.out.println("MANAGER ID" + manId);
+				reqList = erd.getEmpReq(manId, empId);	
+				System.out.println("CHECK" + reqList);
+				System.out.println("Emp Req2 Servlet LAST");
+				
 					String resp = new ObjectMapper().writeValueAsString(reqList);
 					response.getWriter().write(resp);
-				
-				System.out.println(resp + "all requests bruv");
-				} 
-			} catch (Exception e) {
-				e.printStackTrace();
-				response.getWriter().write("{\"pRequests\":null}");
-				
-			}
-		} else {
-			response.getWriter().write("{\"pRequests\":null}");
-	}
+					System.out.println("CHECK" + reqList);
+					System.out.println("Emp Req2 Servlet LAST");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.getWriter().write("{\"EmpReq2stack\":null}");
+		}
+		}else {
+		response.getWriter().write("{\"EmpReq2\":null}");
+		}
 	}
 
 	/**

@@ -8,7 +8,7 @@
 	 manViews();
 	 reqViews();
 	 empPendingViews();
-	//  selectEmpPendingViews();
+	 selectEmpPendingViews();
 
 	 n =  new Date();
 	 y = n.getFullYear();
@@ -164,7 +164,7 @@ function empPendingViews(){
  }
 
 function selectEmpPendingViews(){
-	fetch("http://localhost:8084/Proto/EmpReq").then(function(response) {
+	fetch("http://localhost:8084/Proto/EmpReq2").then(function(response) {
 		return response.json();
 	}).then(function(data) {
 		if (data.session === null) {

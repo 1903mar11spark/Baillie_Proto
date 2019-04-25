@@ -1,6 +1,7 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,19 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.beans.Employees;
+import com.revature.beans.Login;
 import com.revature.dao.EmpReqDaoImp;
 
 /**
- * Servlet implementation class UpdateEmpServlet
+ * Servlet implementation class UpdateLoginServlet
  */
-@WebServlet("/UpdateEmp")
-public class UpdateEmpServlet extends HttpServlet {
+@WebServlet("/uLogin")
+public class UpdateLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	EmpReqDaoImp erd = new EmpReqDaoImp();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateEmpServlet() {
+    public UpdateLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +34,6 @@ public class UpdateEmpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("you failed");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -48,24 +50,25 @@ public class UpdateEmpServlet extends HttpServlet {
 				String eId = session.getAttribute("employeeId").toString();
 				int idE = Integer.parseInt(eId);
 				
-				//System.out.println("I am in the Update EpiCenter");
+				System.out.println("I am in the Update EpiCenter Come AT ME BRO");
 				
-				String fName= request.getParameter("firstName");
-				String lName = request.getParameter("lastName");
-				String email = request.getParameter("email");
+				String fName= request.getParameter("nUser");
+				String lName = request.getParameter("nPass");
+			
 				
-				Employees emp = new Employees(fName, lName, email, idE);
-				update = erd.updateEmps(emp);
+				Login emp = new Login(fName, lName, idE);
+				update = erd.updateLogin(emp);
 				
-				//System.out.println(erd.updateEmps(emp) + " t/f value");
+				System.out.println(erd.updateLogin(emp) + " LOGIN");
 				
+				Employees cat = new Employees(idE);
 				
-				emp = erd.getEmployeeInfo(idE);
-				title = emp.getTitle();
+				cat = erd.getEmployeeInfo(idE);
+				title = cat.getTitle();
 				
 				if (!title.equals("TEMP")){
 					if(update == true) {
-					System.out.println("Update Successful via Servlet");
+					System.out.println("Login Update Successful Servlet");
 					response.sendRedirect("ManagerHome");
 					}else {
 						response.sendRedirect("Login");

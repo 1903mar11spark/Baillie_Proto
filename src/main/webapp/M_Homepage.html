@@ -172,23 +172,23 @@
                       <form id="create-emp-from" class="form" action="CreateNewEmp" method="post">
                           <div class="md-form mb-5">
                               <label data-error="wrong" data-success="right" for="orangeForm-first">First Name:</label>
-                              <input type="text" id="newFirst" class="form-control validate" name="newFirst">
+                              <input type="text" id="newFirst" class="form-control validate" name="newFirst" placeholder="First Name">
                             </div>
                             <div class="md-form mb-5">
                                 <label data-error="wrong" data-success="right" for="orangeForm-last">Last Name:</label>
-                              <input type="text" id="newLast" class="form-control validate" name="newLast">
+                              <input type="text" id="newLast" class="form-control validate" name="newLast" placeholder="Last Name">
                             </div>
                             <div class="md-form mb-4">
                                 <label data-error="wrong" data-success="right" for="orangeForm-email">Email:</label>
-                              <input type="email" id="newEmail" class="form-control validate" name="newEmail">
+                              <input type="email" id="newEmail" class="form-control validate" placeholder="Email" name="newEmail">
                             </div>
                             <div class="md-form mb-5">
                                 <label data-error="wrong" data-success="right" for="orangeForm-title">Title:</label>
-                                <input type="text" id="newTitle" class="form-control validate" name="newTitle">
+                                <input type="text" id="newTitle" class="form-control validate" placeholder="Title - Default TEMP" name="newTitle">
                               </div>
                               <div class="form-group"> 
                                   <label for="exampleFormControlSelect2">Enter Managing Supervisor ID</label>
-                                  <input class="form-control" type="number" name="manBy" id="manBy" min="0"/>
+                                  <input class="form-control" placeholder="Supervisor Id" type="number" name="manBy" id="manBy" min="0"/>
                                 </div>
                           <!-- <div class="md-form mb-4">
                             <label for="radio-button">Select Manager</label>
@@ -209,13 +209,43 @@
                             </div>
                       </form>
                </div>
+
           </div>
+      <!--Change Username/Password-->
       
     </div><!--END OF CONTAINER-->
-    
   </div>
   <br>
   <!--One Section-->
+  <div class="container d-flex" style="width: 40rem;">
+    <div class="card" id="colorfix">
+            <div class="card-header">
+              <h2>Change Login</h2>
+              </div>
+            <br>
+          <div class="card-body">
+            <img src="./Images/group.jpg" width="320" height="250" alt="Emp Photo">
+            <div class="display font-weight-bold">
+                <br>
+                    <!---FORM STARTS HERE-->
+                    <form id="update-login" class="form" action="uLogin" method="post">
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Update Username</label>
+                        <input type="text" id="updateFirst" class="form-control validate" placeholder="New Username" name="nUser"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Update Password</label>
+                        <input type="password" id="updateFirst" class="form-control validate" placeholder="New Password" name="nPass"></textarea>
+                      </div>
+                      <button type="submit" name="submit" class="btn btn-primary text-center">Change</button>
+                      </form>
+             </div>
+
+        </div>
+    <!--Change Username/Password-->
+    
+  </div><!--END OF CONTAINER-->
+</div>
   </div><!--where container ends-->
   
 
@@ -340,7 +370,7 @@
               </div>
               <!---FORM FOR EMP ID-->
               <div class="container">
-              <form id="emp-form" class="form" action="EmpReq" method="post">
+              <form id="emp-form" class="form" action="EmpReq2" method="post">
                 
                   <div class="form-group">
                       <label for="usr">Enter Employee ID:</label>
@@ -391,7 +421,7 @@
                   <form id="upRequest" class="form" action="upRequest" method="post">
                       <div class="form-group">
                           <label for="exampleFormControlSelect2">SELECT REQUESTID TO UPDATE</label>
-                          <input class="form-control" type="number" name="rqId" id="rqId" min="0"/>
+                          <input class="form-control" type="number" placeholder="Request ID" name="rqId" id="rqId" min="0"/>
                         </div>
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">REQUEST STATUS</label>
@@ -447,7 +477,7 @@
                        </div>
                        <div class="form-group">
                            <label for="exampleFormControlFile1" >Attach Reciept</label>
-                           <!-- <input type="file" class="form-control" id="exampleFormControlFile1" name="image"> -->
+                           <input type="file" class="form-control" id="exampleFormControlFile1" name="image">
                          </div>
                          <button type="submit" name="submit" class="btn btn-primary text-center">Submit</button>
                      </form>

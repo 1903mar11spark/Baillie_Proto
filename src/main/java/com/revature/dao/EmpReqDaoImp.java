@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.beans.Employees;
+import com.revature.beans.Login;
 import com.revature.beans.Requests;
 import com.revature.util.ConnectionsUtil;
 
@@ -19,7 +20,7 @@ public class EmpReqDaoImp implements EmpReqDao{
 	public List<Employees> getAllEmpMan() {
 		List<Employees> a = new ArrayList<>();
 		try (Connection con = ConnectionsUtil.getConnectionFromFile()) {
-			String sql = "SELECT E1.EMPLOYEE_ID AS EMPLOYEENO, E1.FIRSTNAME AS EMPLOYEE, E2.FIRSTNAME AS SUPERVISOR FROM EMPLOYEES E1 INNER JOIN EMPLOYEES E2 ON E1.EMPLOYEE_ID = E2.REPORTSTO";
+			String sql = "SELECT E2.EMPLOYEE_ID AS EMPLOYEENO, E1.FIRSTNAME AS EMPLOYEE, E2.FIRSTNAME AS SUPERVISOR FROM EMPLOYEES E1 INNER JOIN EMPLOYEES E2 ON E1.EMPLOYEE_ID = E2.REPORTSTO";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -352,6 +353,24 @@ public class EmpReqDaoImp implements EmpReqDao{
 			pstmt.setString(4, emp.getTitle());
 			pstmt.setInt(5, emp.getReportsTo());
 			pstmt.executeUpdate();
+			return true;
+		}
+		catch (SQLException | IOException e) {
+			e.printStackTrace();	
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateLogin(Login log) {
+		try (Connection con = ConnectionsUtil.getConnectionFromFile()) {
+			String sql = "UPDATE LOGIN SET USERNAME = ?, UPASSWORD = ? WHERE EMPLOYEE_ID = ?";	
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, log.getUsername());
+			pstmt.setString(2, log.getPassword());
+			pstmt.setInt(3, log.getEmployeeId());
+			pstmt.executeUpdate();
+			System.out.println("have updated login?");
 			return true;
 		}
 		catch (SQLException | IOException e) {
